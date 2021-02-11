@@ -1,0 +1,39 @@
+# F# learn
+
+- prefix function = normal function
+
+- infix function = 1 + 1, with '+' being the function
+- infix functions can be applied as prefix functions
+  - `let add1 = (+) 1`
+  - `add1 5` results in `6`
+- making your own operators by applying functions infix
+  - `let (|><|) x y = x - y |> abs`
+  - `5 |><| 2 |><| 10` results in 7
+- string slicing
+  - `"these are words".[3..5]` 
+- `Unit` 
+  - everything has to return a value in F#. so if you don't actually want something you can return `()` at the end (Unit)
+- need to look more indepth at the reaffication stuff and memory management
+- Seq vs List vs Array 
+  - Seq is the most basic (not much more complex than `obj`), is lazy
+    - `yield!` appends a sequence. Similar use as spread operator
+  - List puts the whole list in memory - so doing a toList reifies it
+    - Linked
+    - each item in list is the same type
+    - List is immutable
+    - List comprehension is doing some calc to create a list
+    - List comprehension 
+      - `[for x in 1..10 do yield 2 * x]`  or
+      - `[for x in 1..10 -> 2 * x]`
+  - Array is mutable `[| 1..5|]`
+    - can't do cons operator
+- Parser stuff is hurting my brain when i was watching the pluralsight video. is it directly relevant? maybe I was just tired
+- Organization and Flow Control
+  - Solution can contain a mix of Projects from F#, C#, VB
+- Records: represented by `type` keyword
+  - basically a class BUT
+  - they have structural equality semantics -- they can be compared using simple equality checks
+- Discriminated Union: represented by `type` keyword
+  - basically an interface
+  - an object with a specific type or set of types
+- at first it seems pretty weird that interfaces and types are represented by the same keyword, but they are both non-conrete representations of data so it does make a lot of sense
